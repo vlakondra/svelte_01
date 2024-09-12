@@ -3,17 +3,34 @@ import Comp1 from './lib/Comp1.svelte'
 import Comp2 from './lib/Comp2.svelte'
 import Comp3 from './lib/Comp3.svelte'
 
+import DetectMessage from './lib/Detector.svelte'
+
+//Массив объектов, содержащий ссылки на 3 компонента
 const options = [
 		{  component: Comp1 },
 		{  component: Comp2 },
     {  component: Comp3 },
 	];
 
+  let selected = options[0]; //компонент по умолчанию
+
   function SelectComp(idcomp){
-     selected=options[idcomp]
+    //Функция вызывается из верхнего меню и определяет
+    //выбранный пользователем компонент
+     selected = options[idcomp]
   }
 
-  let selected = options[0];
+  
+
+  let current_message; 
+  
+  function SendMessage(mess){
+    //функция вызывается из компонентов Comp1, Comp2 и Comp3
+    //Каждый из них формирует свое сообщение, к-е передается
+    //через аргумент mess  и определяет переменную current_message.
+    //Current_message передается в компонент Detector через prop messagefrom
+     current_message = mess
+  }
 
 </script>
 
@@ -39,12 +56,17 @@ const options = [
     <div class="main-content">
       <!-- Main content area -->
       <h1>Main Content</h1>
-      <svelte:component this={selected.component} />
+
+      <!-- Динамические компоненты -->
+      <svelte:component 
+         this={selected.component} 
+         app_function={SendMessage} />
+
     </div>
     <div class="right-sidebar">
       <!-- Right sidebar content -->
       <h2>Right Sidebar</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      <DetectMessage messagefrom={current_message}/>
     </div>
   </div>
   <footer>
