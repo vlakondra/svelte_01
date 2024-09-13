@@ -18,20 +18,26 @@ const options = [
     //Функция вызывается из верхнего меню и определяет
     //выбранный пользователем компонент
      selected = options[idcomp]
+     
   }
 
   
 
   let current_message; 
-  
+
   function SendMessage(mess){
     //функция вызывается из компонентов Comp1, Comp2 и Comp3
     //Каждый из них формирует свое сообщение, к-е передается
     //через аргумент mess  и определяет переменную current_message.
     //Current_message передается в компонент Detector через prop messagefrom
      current_message = mess
+     clicked = true
+     setTimeout(() => {
+      clicked = false
+     }, 200);
   }
 
+let clicked = false;
 </script>
 
 <main>
@@ -41,7 +47,7 @@ const options = [
     <!-- Header content -->
     <nav>
       <ul>
-        <li><a on:click={(c)=>SelectComp(0)} href="#">Menu item 1</a></li>
+        <li><a class:flt={clicked} on:click={(c)=>SelectComp(0)} href="#">Menu item 1</a></li>
         <li><a on:click={(c)=>SelectComp(1)} href="#">Menu item 2</a></li>
         <li><a on:click={(c)=>SelectComp(2)} href="#">Menu item 3</a></li>
       </ul>
@@ -79,10 +85,21 @@ const options = [
 
 <style>
 /* Global styles */
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.flt{
+  filter: blur(2px);
 }
 
 .holy-grail {
