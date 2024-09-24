@@ -17,8 +17,8 @@
     <h1>Массивы и циклы</h1>
   
     <div>
-        {#each arr as item,i (item)}
-            <div>{item}-{i}-{item}</div>
+        {#each arr as item,i (Math.floor(Math.random() * 1000))}
+            <div>{item}-{i}-{Math.floor(Math.random() * 1000)}</div>
         {:else}
             Массив пуст
         {/each}
