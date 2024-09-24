@@ -2,6 +2,8 @@
 import Comp1 from './lib/Comp1.svelte'
 import Comp2 from './lib/Comp2.svelte'
 import Comp3 from './lib/Comp3.svelte'
+import TopMenu  from './lib/TopMenu.svelte';
+
 
 import DetectMessage from './lib/Detector.svelte'
 
@@ -20,8 +22,6 @@ const options = [
      selected = options[idcomp]
      
   }
-
-  
 
   let current_message; 
 
@@ -43,16 +43,13 @@ let clicked = false;
 <main>
 <!-- The Holy Grail page structure -->
 <div class="holy-grail">
+  
   <header>
-    <!-- Header content -->
     <nav>
-      <ul>
-        <li><a class:flt={clicked} on:click={(c)=>SelectComp(0)} href="#">Menu item 1</a></li>
-        <li><a on:click={(c)=>SelectComp(1)} href="#">Menu item 2</a></li>
-        <li><a on:click={(c)=>SelectComp(2)} href="#">Menu item 3</a></li>
-      </ul>
-    </nav>
+      <TopMenu {SelectComp}/>
+     </nav>
   </header>
+
   <div class="container">
     <div class="left-sidebar">
       <!-- Left sidebar content -->
