@@ -95,9 +95,6 @@ let clicked = false;
   padding: 0;
 }
 
-.flt{
-  filter: blur(2px);
-}
 
 .holy-grail {
   display: flex;
@@ -112,7 +109,7 @@ header {
   text-align: center;
 }
 
-header nav ul {
+/* header nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -127,7 +124,7 @@ header nav li {
 header nav a {
   color: #fff;
   text-decoration: none;
-}
+} */
 
 .container {
   display: flex;
@@ -192,12 +189,13 @@ footer {
   }
 }
 
-@media (max-width: 480px) {
+/* Перенесен в TopMenu */
+/* @media (max-width: 480px) {
   header nav ul {
     flex-direction: column;
   }
   header nav li {
     margin-right: 0;
   }
-}
+} */
 </style>

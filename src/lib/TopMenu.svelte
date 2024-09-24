@@ -1,7 +1,7 @@
 <script>
     let menu_items = ["Пункт 1", "Пункт 2", "Пункт 3"];
     export let SelectComp; //ссылка на функцию, переключащую компоненты; находится в App
-    let active = 0; //индекс активного пункта меню
+    let active_idx = 0; //индекс активного пункта меню
 </script>
 
 <div class="menu-items">
@@ -9,10 +9,10 @@
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
-            class:active={active == i}
+            class:active={active_idx == i}
             on:click={() => {
                 SelectComp(i);
-                active = i;
+                active_idx = i;
             }}
         >
             {i}-{item}
@@ -21,20 +21,30 @@
 </div>
 
 <style>
+    /* https://codepen.io/Gogh/pen/eYpjbKp */
     .menu-items {
         display: flex;
         justify-content: space-between;
     }
     .active {
         border-bottom: 2px solid yellowgreen;
+        transition: 0.5s all ease-out;
     }
 
     .menu-items > div {
-        padding: 10px 20px; 
-        cursor: pointer; 
+        padding: 10px 20px;
+        cursor: pointer;
     }
     .menu-items > div:hover {
-        background-color: #f0f0f0; 
+        background-color: #f0f0f0;
         color: rgb(37, 35, 35);
+    }
+
+    /* этот медиа-запрос теперь нужно убрать из App */
+    @media (max-width: 480px) {
+        div.menu-items {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 </style>

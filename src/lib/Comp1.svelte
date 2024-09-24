@@ -1,26 +1,52 @@
 <script>
-    export let app_function
+    export let app_function;
+    let arr = [1, 2, 3, 4, 5];
+
+    function addItem() {
+        arr = [...arr, arr.push(Math.max(...arr) + 1)];
+        console.log(arr);
+    }
+    const removeItem = () => {
+        arr.splice(0, 1)
+        arr=[...arr]
+        console.log(arr);
+    };
 </script>
 
-<div class='wrapper'>
-<h1>
-    Component 1
-</h1>
-<div>
-    <button on:click={()=>app_function('Сообщение от Comp1')}>Кнопка 1</button>
-</div>
+<div class="wrapper">
+    <h1>Массивы и циклы</h1>
+  
+    <div>
+        {#each arr as item,i (item)}
+            <div>{item}-{i}-{item}</div>
+        {:else}
+            Массив пуст
+        {/each}
+    </div>
+    
+    <div>
+        <button on:click={addItem}>Добавить</button>
+    </div>
+    <div>
+        <button on:click={removeItem}>Удалить</button>
+    </div>
+    <div>
+        <button on:click={() => app_function("Сообщение от Comp1")}
+            >Кнопка 1</button
+        >
+    </div>
 </div>
 
 <style>
-    button{
+    button {
         width: 100px;
-        height:50px;
+        height: 50px;
         background-color: red;
-        color:azure
+        color: azure;
     }
-    .wrapper{
-        border:1px solid silver;
+    .wrapper {
+        border: 1px solid silver;
         border-radius: 30px;
-        padding:30px;
+        padding: 30px;
     }
 </style>
