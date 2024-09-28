@@ -15,11 +15,16 @@ const options = [
 	];
 
   let selected = options[0]; //компонент по умолчанию
-
+  let active_item = 0
+  
+  /**
+     * @param {number} idcomp
+     */
   function SelectComp(idcomp){
     //Функция вызывается из верхнего меню и определяет
     //выбранный пользователем компонент
      selected = options[idcomp]
+     active_item = idcomp
      
   }
 
@@ -46,7 +51,7 @@ let clicked = false;
   
   <header>
     <nav>
-      <TopMenu {SelectComp}/>
+      <TopMenu {SelectComp} act_idx={active_item}/>
      </nav>
   </header>
 
@@ -63,7 +68,12 @@ let clicked = false;
       <!-- Динамические компоненты -->
       <svelte:component 
          this={selected.component} 
-         app_function={SendMessage} />
+         app_function={SendMessage} 
+        />
+
+         <div>
+     
+      </div>
 
     </div>
     <div class="right-sidebar">

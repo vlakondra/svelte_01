@@ -1,29 +1,32 @@
 <script>
     export let app_function;
-    let arr = [1, 2, 3, 4, 5];
+    // export let parr
+    // let arr = parr//[1, 2, 3, 4, 5];
+    import { tarr } from "./store.js";
 
     function addItem() {
-        arr = [...arr, arr.push(Math.max(...arr) + 1)];
-        console.log(arr);
+        // $tarr = [...$tarr, $tarr.push(Math.max(...$tarr) + 1)];
+        $tarr = [...$tarr, Math.max(...$tarr) + 1];
+        //console.log($tarr);
     }
     const removeItem = () => {
-        arr.splice(0, 1)
-        arr=[...arr]
-        console.log(arr);
+        $tarr.splice(0, 1);
+        $tarr = [...$tarr];
+        console.log($tarr);
     };
 </script>
 
 <div class="wrapper">
     <h1>Массивы и циклы</h1>
-  
+
     <div>
-        {#each arr as item,i (Math.floor(Math.random() * 1000))}
-            <div>{item}-{i}-{Math.floor(Math.random() * 1000)}</div>
+        {#each $tarr as item, i (Math.floor(Math.random() * 100000))}
+            <div>{item}-{i}-{Math.floor(Math.random() * 100000)}</div>
         {:else}
             Массив пуст
         {/each}
     </div>
-    
+
     <div>
         <button on:click={addItem}>Добавить</button>
     </div>

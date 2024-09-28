@@ -1,7 +1,9 @@
 <script>
     let menu_items = ["Пункт 1", "Пункт 2", "Пункт 3"];
     export let SelectComp; //ссылка на функцию, переключащую компоненты; находится в App
-    let active_idx = 0; //индекс активного пункта меню
+    let active_idx = 0; //индекс активного пункта меню -> переделан на props
+
+    export let act_idx =0; 
 </script>
 
 <div class="menu-items">
@@ -9,10 +11,10 @@
         <!-- svelte-ignore a11y-no-static-element-interactions -->
         <!-- svelte-ignore a11y-click-events-have-key-events -->
         <div
-            class:active={active_idx == i}
+            class:active={act_idx == i}
             on:click={() => {
                 SelectComp(i);
-                active_idx = i;
+                //active_idx = i;
             }}
         >
             {i}-{item}
