@@ -14,14 +14,22 @@
         $tarr = [...$tarr];
         console.log($tarr);
     };
+    let flt =0.1
+    const filterby=(idx)=>{
+        flt = idx
+    }
 </script>
 
 <div class="wrapper">
     <h1>Массивы и циклы</h1>
 
     <div>
-        {#each $tarr as item, i (Math.floor(Math.random() * 100000))}
-            <div>{item}-{i}-{Math.floor(Math.random() * 100000)}</div>
+        {#each $tarr.filter((el)=>el!=flt) as item, i (Math.floor(Math.random() * 100000))}
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-static-element-interactions -->
+            <div on:click={()=>filterby(item)} >
+                {item}-{i}-{Math.floor(Math.random() * 100000)}
+            </div>
         {:else}
             Массив пуст
         {/each}
