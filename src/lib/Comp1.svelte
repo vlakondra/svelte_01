@@ -1,12 +1,18 @@
 <script>
+    /**
+     * функция, переключающая компоненты
+     */
     export let app_function;
     // export let parr
     // let arr = parr//[1, 2, 3, 4, 5];
     import { tarr } from "./store.js";
 
     function addItem() {
-        // $tarr = [...$tarr, $tarr.push(Math.max(...$tarr) + 1)];
-        $tarr = [...$tarr, Math.max(...$tarr) + 1];
+        if ($tarr.length == 0) {
+            $tarr = [...$tarr, 0];
+        } else {
+            $tarr = [...$tarr, Math.max(...$tarr) + 1];
+        }
         //console.log($tarr);
     }
     const removeItem = () => {
@@ -14,20 +20,20 @@
         $tarr = [...$tarr];
         console.log($tarr);
     };
-    let flt =0.1
-    const filterby=(idx)=>{
-        flt = idx
-    }
+    let flt = 0.1;
+    const filterby = (idx) => {
+        flt = idx;
+    };
 </script>
 
 <div class="wrapper">
     <h1>Массивы и циклы</h1>
 
     <div>
-        {#each $tarr.filter((el)=>el!=flt) as item, i (Math.floor(Math.random() * 100000))}
+        {#each $tarr.filter((el) => el != flt) as item, i (Math.floor(Math.random() * 100000))}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <!-- svelte-ignore a11y-no-static-element-interactions -->
-            <div on:click={()=>filterby(item)} >
+            <div on:click={() => filterby(item)}>
                 {item}-{i}-{Math.floor(Math.random() * 100000)}
             </div>
         {:else}
@@ -39,7 +45,9 @@
         <button on:click={addItem}>Добавить</button>
     </div>
     <div>
-        <button on:click={removeItem}>Удалить</button>
+        <button disabled={$tarr.length == 0} on:click={removeItem}
+            >Удалить</button
+        >
     </div>
     <div>
         <button on:click={() => app_function("Сообщение от Comp1")}

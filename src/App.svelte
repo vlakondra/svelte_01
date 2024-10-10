@@ -30,6 +30,9 @@ const options = [
 
   let current_message; 
 
+  /**
+     * @param {string} mess - текст сообщения
+     */
   function SendMessage(mess){
     //функция вызывается из компонентов Comp1, Comp2 и Comp3
     //Каждый из них формирует свое сообщение, к-е передается
@@ -46,7 +49,7 @@ let clicked = false;
 </script>
 
 <main>
-<!-- The Holy Grail page structure -->
+
 <div class="holy-grail">
   
   <header>
@@ -56,13 +59,13 @@ let clicked = false;
   </header>
 
   <div class="container">
+
     <div class="left-sidebar">
-      <!-- Left sidebar content -->
       <h2>Left Sidebar</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div>
+
     <div class="main-content">
-      <!-- Main content area -->
       <h1>Main Content</h1>
 
       <!-- Динамические компоненты -->
