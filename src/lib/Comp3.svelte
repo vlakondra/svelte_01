@@ -1,30 +1,21 @@
-<script>
-  export let app_function;
-</script>
 
-<div class="wrapper">
   <div class="card">
     <div class ='header'>
-        HEADER
+        Заголовок
     </div>
 
     <div class ='content'>
+      <p>Содержание</p>
         <p>123</p>
     </div>
 
-    <div class ='footer'>FOOTER</div>
+    <div class ='footer'>Подвал</div>
   </div>
-</div>
 
 <style>
-  .wrapper {
-    border: 1px solid silver;
-    border-radius: 30px;
-    padding: 3px;
-    height:400px;
 
-  }
-.content{
+
+  .content{
     border:1px solid rgb(95, 23, 190);
     /* height: -webkit-fill-available; */
     height:100%;
@@ -43,5 +34,9 @@
   }
   .header{
     background: #8f7c8c;;
+  }
+
+  .content, .footer, .header{
+    padding:5px;
   }
 </style>
