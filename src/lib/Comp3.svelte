@@ -3,15 +3,23 @@
 </script>
 
 <div class='wrapper'>
-<h1>
-    Component 3
-</h1>
-<div>
-    <button on:click={()=>app_function('Сообщение от Comp3')}>Кнопка 3</button>
-</div>
+    <div class="card">
+        <img src="vite.svg" alt="Image Description">
+        <h3>Title of the Card</h3>
+        <p>Description of the Card</p>
+        <button type="button">Read More</button>
+    </div>
 </div>
 
 <style>
+
+
+
+
+
+
+
+
     button{
         width: 100px;
         height:50px;
@@ -21,6 +29,6 @@
     .wrapper{
         border:1px solid silver;
         border-radius: 30px;
-        padding:30px;
+        padding:3px;
     }
 </style>
