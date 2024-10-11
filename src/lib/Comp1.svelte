@@ -13,8 +13,8 @@
         } else {
             $tarr = [...$tarr, Math.max(...$tarr) + 1];
         }
-        //console.log($tarr);
     }
+    
     const removeItem = () => {
         $tarr.splice(0, 1);
         $tarr = [...$tarr];
