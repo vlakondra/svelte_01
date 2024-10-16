@@ -117,8 +117,8 @@
   }
 
   .left-sidebar {
-    flex: 1;
-    max-width: 250px;
+    flex: 2;
+    /* max-width: 250px; */
     margin-right: 20px;
     background-color: #f7f7f7;
     padding: 20px;
