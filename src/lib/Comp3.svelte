@@ -3,59 +3,55 @@
     import Progbar from "./progbar.svelte";
 
     export let app_function;
-    let coll = [
-        { num: 1, arr: ["a", "b"] },
-        { num: 2, arr: ["c", "d"] },
-        { num: 3, arr: ["e", "f"] },
-    ];
+
     let selected_1;
     let selected_2;
-    // console.log(coll[selected_1].arr)
+
+    const onDepSelected = (e) => {
+        selected_2 = "null"; //Установим преп-ля в placeholder
+    };
 
     const data = departData();
-    console.log(data)
+    console.log($data);
 </script>
 
 <div class="wrapper">
-    <Progbar/>
+    <Progbar />
+
     <div>
-        <select bind:value={selected_1}>
-            <option  selected disabled>Выберите</option>
-            {#each coll as item, i}
-                <option value={i}>
-                    {item.num}
+        <select bind:value={selected_1} on:change={(v) => onDepSelected(v)}>
+            <option selected disabled>Выберите кафедру</option>
+            {#each $data.Departs as item, i}
+                <option value={item.Depart_ID}>
+                    {item.DepartName}
                 </option>
             {/each}
         </select>
-
-        <p>{selected_1}</p>
     </div>
 
     <div>
         <select bind:value={selected_2}>
-            <option  selected disabled>Выберите</option>
-            {#if selected_1 >= 0}
-                {#each coll[selected_1].arr as item, i}
-                    <option value={i}>
-                        {item}
-                    </option>
-                {/each}
-            {/if}
+            <option value="null" selected disabled
+                >Выберите преподавателя</option
+            >
+            {#each $data.Teachers.filter((t) => t.Depart_ID == selected_1) as item, i}
+                <option value={item.Emp_ID}>
+                    {item.FIO}
+                </option>
+            {/each}
         </select>
-
-        <p>{selected_2}</p>
     </div>
 </div>
 
 <style>
-
     .wrapper {
         display: flex;
+        flex-direction: column;
         border: 1px solid silver;
         border-radius: 30px;
         padding: 20px;
     }
-    .wrapper >div{
+    .wrapper > div {
         margin-left: 20px;
     }
 </style>
