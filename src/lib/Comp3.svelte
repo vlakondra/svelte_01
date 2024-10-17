@@ -1,4 +1,7 @@
 <script>
+    import departData from "./store.js";
+    import Progbar from "./progbar.svelte";
+
     export let app_function;
     let coll = [
         { num: 1, arr: ["a", "b"] },
@@ -8,9 +11,13 @@
     let selected_1;
     let selected_2;
     // console.log(coll[selected_1].arr)
+
+    const data = departData();
+    console.log(data)
 </script>
 
 <div class="wrapper">
+    <Progbar/>
     <div>
         <select bind:value={selected_1}>
             <option  selected disabled>Выберите</option>
@@ -52,4 +59,3 @@
         margin-left: 20px;
     }
 </style>
-
