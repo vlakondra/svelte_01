@@ -8,7 +8,7 @@
     let selected_2;
 
     const onDepSelected = (e) => {
-        selected_2 = "null"; //Установим преп-ля в placeholder
+        selected_2 = "bla"; //Установим преп-ля в placeholder
     };
 
     const data = departData();
@@ -17,9 +17,8 @@
 
 <div class="wrapper">
     <Progbar />
-    {#if $data}
-        <!-- content here -->
 
+    {#if $data}
         <div>
             <select bind:value={selected_1} on:change={(v) => onDepSelected(v)}>
                 <option selected disabled>Выберите кафедру</option>
@@ -33,7 +32,7 @@
 
         <div>
             <select bind:value={selected_2}>
-                <option value="null" selected disabled
+                <option value="bla" selected disabled
                     >Выберите преподавателя</option
                 >
                 {#each $data.Teachers.filter((t) => t.Depart_ID == selected_1) as item, i}
