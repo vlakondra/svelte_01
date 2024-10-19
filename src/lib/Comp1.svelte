@@ -1,4 +1,6 @@
 <script>
+	import { slide } from 'svelte/transition';
+
     /**
      * функция, переключающая компоненты
      */
@@ -33,7 +35,7 @@
         {#each $tarr.filter((el) => el != flt) as item, i (Math.floor(Math.random() * 100000))}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <!-- svelte-ignore a11y-no-static-element-interactions -->
-            <div on:click={() => filterby(item)}>
+            <div on:click={() => filterby(item)}  transition:slide|global  >
                 {item}-{i}-{Math.floor(Math.random() * 100000)}
             </div>
         {:else}

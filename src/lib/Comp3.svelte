@@ -17,30 +17,33 @@
 
 <div class="wrapper">
     <Progbar />
+    {#if $data}
+        <!-- content here -->
 
-    <div>
-        <select bind:value={selected_1} on:change={(v) => onDepSelected(v)}>
-            <option selected disabled>Выберите кафедру</option>
-            {#each $data.Departs as item, i}
-                <option value={item.Depart_ID}>
-                    {item.DepartName}
-                </option>
-            {/each}
-        </select>
-    </div>
+        <div>
+            <select bind:value={selected_1} on:change={(v) => onDepSelected(v)}>
+                <option selected disabled>Выберите кафедру</option>
+                {#each $data.Departs as item, i}
+                    <option value={item.Depart_ID}>
+                        {item.DepartName}
+                    </option>
+                {/each}
+            </select>
+        </div>
 
-    <div>
-        <select bind:value={selected_2}>
-            <option value="null" selected disabled
-                >Выберите преподавателя</option
-            >
-            {#each $data.Teachers.filter((t) => t.Depart_ID == selected_1) as item, i}
-                <option value={item.Emp_ID}>
-                    {item.FIO}
-                </option>
-            {/each}
-        </select>
-    </div>
+        <div>
+            <select bind:value={selected_2}>
+                <option value="null" selected disabled
+                    >Выберите преподавателя</option
+                >
+                {#each $data.Teachers.filter((t) => t.Depart_ID == selected_1) as item, i}
+                    <option value={item.Emp_ID}>
+                        {item.FIO}
+                    </option>
+                {/each}
+            </select>
+        </div>
+    {/if}
 </div>
 
 <style>
