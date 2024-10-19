@@ -1,5 +1,9 @@
 <script>
 	import { slide } from 'svelte/transition';
+    import { trapFocus } from './actions.js';
+
+    let button_first;
+
 
     /**
      * функция, переключающая компоненты
@@ -10,6 +14,7 @@
     import { tarr } from "./store.js";
 
     function addItem() {
+        console.log(button_first)
         if ($tarr.length == 0) {
             $tarr = [...$tarr, 0];
         } else {
@@ -20,15 +25,26 @@
     const removeItem = () => {
         $tarr.splice(0, 1);
         $tarr = [...$tarr];
-        console.log($tarr);
     };
     let flt = 0.1;
     const filterby = (idx) => {
         flt = idx;
     };
+
+    function ttt(e){
+        console.log('ttt',button_first)
+        
+        return {
+	destroy() {
+		console.log('destroy');
+	}
+};
+    }
+    //
 </script>
 
-<div class="wrapper">
+<!-- Отслеживаем нажатие на Tab и запрещаем выход за рамки компонента  -->
+<div class="wrapper" use:trapFocus>
     <h1>Массивы и циклы</h1>
 
     <div>
@@ -44,7 +60,7 @@
     </div>
 
     <div>
-        <button on:click={addItem}>Добавить</button>
+        <button  tabindex="0"  bind:this={button_first}  on:click={addItem}>Добавить</button>
     </div>
     <div>
         <button disabled={$tarr.length == 0} on:click={removeItem}
@@ -62,8 +78,7 @@
     button {
         width: 100px;
         height: 50px;
-        background-color: red;
-        color: azure;
+        color: rgb(81, 34, 199);
     }
     .wrapper {
         border: 1px solid silver;
