@@ -3,6 +3,8 @@
   import Comp2 from "./lib/Comp2.svelte";
   import Comp3 from "./lib/Comp3.svelte";
   import TopMenu from "./lib/TopMenu.svelte";
+  import Fa from "svelte-fa";
+  import { faCube } from "@fortawesome/free-solid-svg-icons";
 
   import DetectMessage from "./lib/Detector.svelte";
 
@@ -58,6 +60,9 @@
       <div class="left-sidebar">
         <h2>Левый сайдбар</h2>
         <p>Здесь может быть реклама, новости или дополнительные пункты меню</p>
+        <div >
+          <Fa icon={faCube} size="1x" pulse  color="blue" />
+      </div>
       </div>
 
       <div class="main-content">

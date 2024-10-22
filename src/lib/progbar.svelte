@@ -1,12 +1,12 @@
 <script>
     import { data_loading } from "./store.js";
-    import { fade,fly } from 'svelte/transition';
+    import { fade, fly } from "svelte/transition";
     import Fa from "svelte-fa";
     import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 </script>
 
 {#if $data_loading}
-    <div class="progbar"  out:fade>
+    <div class="progbar" out:fade>
         <Fa icon={faSpinner} size="3x" spin color="blue" />
     </div>
 {/if}

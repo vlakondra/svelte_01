@@ -1,9 +1,14 @@
+import Fa from "svelte-fa";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+
+
 export function trapFocus(node) {
+    //node - элемент, на к-м была установлена use-директива 
     //получим самый "глубокий" элемент - body
 	const previous = document.activeElement;
 
     function focusable() {
-        //получим массив всех элементов, к-е могут получить фокус
+        //получим массив всех элементов внутри node, к-е могут получить фокус
 		return Array.from(node.querySelectorAll('button, [href], input, select,  [tabindex]:not([tabindex="-1"])'));
 	}
     //определим функцию-обработчик события Keydown      
@@ -30,8 +35,8 @@ export function trapFocus(node) {
 		// 	event.preventDefault();
 		// }
  
-        //Возможность того, что юзер нажмет кл. Shift для движения 
-        //в обратном порядке игнорируем для простоты
+        //Игнорируем возможность того, что юзер нажмет кл. Shift 
+        //для движения в обратном порядке
         if ( current === last) { 
             console.log('prevent 2 !')
 			first.focus(); //фокусируем первый элемент
@@ -41,6 +46,6 @@ export function trapFocus(node) {
     }
     //фокусируем первый элемент
     focusable()[0]?.focus(); 
-    //добавляем обработчик события Keydown
+    //добавляем обработчик события Keydown на node
     node.addEventListener('keydown', handleKeydown);
 }
