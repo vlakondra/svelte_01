@@ -61,8 +61,14 @@
         <h2>Левый сайдбар</h2>
         <p>Здесь может быть реклама, новости или дополнительные пункты меню</p>
         <div >
-          <Fa icon={faCube} size="1x" pulse  color="blue" />
+         
       </div>
+
+      <div style=" align-content: center; border: 1px solid gray; height:100px">
+        Content with <em>multiple</em> nodes.
+        <Fa icon={faCube} size="1x" pulse  color="blue" />
+      </div>
+
       </div>
 
       <div class="main-content">
