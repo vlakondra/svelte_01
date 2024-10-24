@@ -1,10 +1,7 @@
-import Fa from "svelte-fa";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-
 
 export function trapFocus(node) {
     //node - элемент, на к-м была установлена use-директива 
-    //получим самый "глубокий" элемент - body
+    //получим самый "глубокий" элемент - body (здесь не используется)
 	const previous = document.activeElement;
 
     function focusable() {
@@ -28,17 +25,11 @@ export function trapFocus(node) {
 
         console.log('Curr-first-last',current,first,last)
 
-        //в данном случае это можно не проверять
-        // if (event.shiftKey &&  current === first) {
-        //     console.log('prevent 1')
-		// 	last.focus();
-		// 	event.preventDefault();
-		// }
- 
+   
         //Игнорируем возможность того, что юзер нажмет кл. Shift 
         //для движения в обратном порядке
-        if ( current === last) { 
-            console.log('prevent 2 !')
+        if ( current === last) { //дошли до последнего эл-та
+            console.log('prevent!')
 			first.focus(); //фокусируем первый элемент
 			event.preventDefault(); //и прерываем обработку KeyDown
 		}
