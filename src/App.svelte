@@ -46,13 +46,17 @@
   }
 
   let clicked = false;
-
+let tmp = 100;
+let arr=$state([1,2,3])
   let cls = $state(0);
   let obj =$state({a:2,b:3}) 
   let c = obj
   function onclick() {
+    tmp+=10
     obj.a+=1
-    cls += 1;
+    cls ++;
+    arr.push(arr.length+1)
+    
   }
 </script>
 
@@ -71,13 +75,19 @@
           {cls}
           <p>{obj.a}</p>
           <p>{obj.b}</p>
+          <p>{arr}</p>
+          <p>
           <button {onclick}>click</button>
+        </p>
           {JSON.stringify(obj)}  {JSON.stringify(c)}
         </div>
         <p>Здесь может быть реклама, новости или дополнительные пункты меню</p>
         <div>
           <Fa icon={faCube} size="1x" pulse color="blue" />
         </div>
+        <div>{#each arr as item, i (i*item)}
+          <p>{item}-{item}</p>
+        {/each}</div>
       </div>
 
       <div class="main-content">
