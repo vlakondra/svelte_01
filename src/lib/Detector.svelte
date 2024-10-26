@@ -1,5 +1,5 @@
 <script>
-    export let messagefrom;
+    let { messagefrom } = $props();
 </script>
 
 <h2 class="message">

@@ -15,8 +15,8 @@
     { component: Comp3 },
   ];
 
-  let selected = options[0]; //компонент по умолчанию
-  let active_item = 0;
+  let selected = $state(options[0]); //компонент по умолчанию
+  let active_item = $state(0);
 
   /**
    * @param {number} idcomp
@@ -46,6 +46,14 @@
   }
 
   let clicked = false;
+
+  let cls = $state(0);
+  let obj =$state({a:2,b:3}) 
+  let c = obj
+  function onclick() {
+    obj.a+=1
+    cls += 1;
+  }
 </script>
 
 <main>
@@ -59,26 +67,31 @@
     <div class="container">
       <div class="left-sidebar">
         <h2>Левый сайдбар</h2>
+        <div>
+          {cls}
+          <p>{obj.a}</p>
+          <p>{obj.b}</p>
+          <button {onclick}>click</button>
+          {JSON.stringify(obj)}  {JSON.stringify(c)}
+        </div>
         <p>Здесь может быть реклама, новости или дополнительные пункты меню</p>
-        <div >
-          <Fa icon={faCube} size="1x" pulse  color="blue" />
-      </div>
+        <div>
+          <Fa icon={faCube} size="1x" pulse color="blue" />
+        </div>
       </div>
 
       <div class="main-content">
         <h1>Основной контент</h1>
 
         <!-- Динамические компоненты -->
-        <svelte:component
-          this={selected.component}
+        <selected.component
           app_function={SendMessage}
         />
-
       </div>
       <div class="right-sidebar">
-        <h2>Правый сайдбар </h2>
+        <h2>Правый сайдбар</h2>
         <!-- <DetectMessage messagefrom={current_message} /> -->
-         Здесь может быть любая дополнительная информация
+        Здесь может быть любая дополнительная информация
       </div>
     </div>
     <footer>

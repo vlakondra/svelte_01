@@ -2,16 +2,20 @@
 	import { slide } from 'svelte/transition';
     import { trapFocus } from './actions.js';
 
-    let button_first;
+    let button_first = $state();
 
 
-    /**
-     * функция, переключающая компоненты
-     */
-    export let app_function;
+    
     // export let parr
     // let arr = parr//[1, 2, 3, 4, 5];
     import { tarr } from "./store.js";
+    /**
+     * @typedef {Object} Props
+     * @property {any} app_function - функция, переключающая компоненты
+     */
+
+    /** @type {Props} */
+    let { app_function } = $props();
 
     function addItem() {
         console.log(button_first)
@@ -26,7 +30,7 @@
         $tarr.splice(0, 1);
         $tarr = [...$tarr];
     };
-    let flt = 0.1;
+    let flt = $state(0.1);
     const filterby = (idx) => {
         flt = idx;
     };
@@ -49,9 +53,9 @@
 
     <div>
         {#each $tarr.filter((el) => el != flt) as item, i (Math.floor(Math.random() * 100000))}
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
-            <!-- svelte-ignore a11y-no-static-element-interactions -->
-            <div on:click={() => filterby(item)}  transition:slide|global  >
+            <!-- svelte-ignore a11y_click_events_have_key_events -->
+            <!-- svelte-ignore a11y_no_static_element_interactions -->
+            <div onclick={() => filterby(item)}  transition:slide|global  >
                 {item}-{i}-{Math.floor(Math.random() * 100000)}
             </div>
         {:else}
@@ -60,15 +64,15 @@
     </div>
 
     <div>
-        <button  tabindex="0"  bind:this={button_first}  on:click={addItem}>Добавить</button>
+        <button  tabindex="0"  bind:this={button_first}  onclick={addItem}>Добавить</button>
     </div>
     <div>
-        <button disabled={$tarr.length == 0} on:click={removeItem}
+        <button disabled={$tarr.length == 0} onclick={removeItem}
             >Удалить</button
         >
     </div>
     <div>
-        <button on:click={() => app_function("Сообщение от Comp1")}
+        <button onclick={() => app_function("Сообщение от Comp1")}
             >Кнопка 1</button
         >
     </div>

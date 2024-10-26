@@ -1,8 +1,8 @@
 <script>
-    export let app_function;
     import { tarr } from "./store.js";
+  let { app_function } = $props();
 
-    let s = 0;
+    let s = $state(0);
     /**
      * @param {number} n  - текущий элемент массива
      */
@@ -24,7 +24,7 @@
   
     </div>
     <div>
-        <button on:click={() => app_function("Сообщение от Comp2")}
+        <button onclick={() => app_function("Сообщение от Comp2")}
             >Кнопка 2</button
         >
     </div>

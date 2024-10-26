@@ -1,7 +1,10 @@
 //import './app.css'
-import App from './App.svelte'
+//npx sv migrate svelte-5
 
-const app = new App({
+import App from './App.svelte'
+import { mount } from "svelte";
+
+const app = mount(App, {
   target: document.getElementById('app'),
 })
 

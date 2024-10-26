@@ -1,26 +1,28 @@
 <script>
     let menu_items = ["Пункт 1", "Пункт 2", "Пункт 3"];
 
-    /**
-     * @prop {function} - ссылка на функцию, переключащую компоненты;
-     */
-    export let SelectComp; //ссылка на функцию, переключащую компоненты; находится в App
+    
 
     let active_idx = 0; //индекс активного пункта меню -> переделан на props
 
+    
     /**
-     *@prop {number} - id выбранного пункта
+     * @typedef {Object} Props
+     * @property {any} SelectComp
+     * @property {any} act_idx
      */
-    export let act_idx; 
+
+    /** @type {Props} */
+    let { SelectComp, act_idx } = $props();
 </script>
 
 <div class="menu-items">
     {#each menu_items as item, i}
-        <!-- svelte-ignore a11y-no-static-element-interactions -->
-        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <!-- svelte-ignore a11y_no_static_element_interactions -->
+        <!-- svelte-ignore a11y_click_events_have_key_events -->
         <div
             class:active={act_idx == i}
-            on:click={() => {
+            onclick={() => {
                 SelectComp(i);
             }}
         >

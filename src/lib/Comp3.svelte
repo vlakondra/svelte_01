@@ -2,10 +2,10 @@
     import departData from "./store.js";
     import Progbar from "./progbar.svelte";
 
-    export let app_function;
+    let { app_function } = $props();
 
-    let selected_1;
-    let selected_2;
+    let selected_1 = $state();
+    let selected_2 = $state();
 
     const onDepSelected = (e) => {
         selected_2 = "bla"; //Установим преп-ля в placeholder
@@ -20,7 +20,7 @@
 
     {#if $data}
         <div>
-            <select bind:value={selected_1} on:change={(v) => onDepSelected(v)}>
+            <select bind:value={selected_1} onchange={(v) => onDepSelected(v)}>
                 <option selected disabled>Выберите кафедру</option>
                 {#each $data.Departs as item, i}
                     <option value={item.Depart_ID}>
