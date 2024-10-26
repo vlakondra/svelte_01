@@ -42,6 +42,9 @@
                 {/each}
             </select>
         </div>
+
+    {:else}
+    <p>...Loading</p>
     {/if}
 </div>
 
