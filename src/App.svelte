@@ -75,21 +75,9 @@
           {JSON.stringify(obj)}  {JSON.stringify(c)}
         </div>
         <p>Здесь может быть реклама, новости или дополнительные пункты меню</p>
-<<<<<<< HEAD
         <div>
           <Fa icon={faCube} size="1x" pulse color="blue" />
         </div>
-=======
-        <div >
-         
-      </div>
-
-      <div style=" align-content: center; border: 1px solid gray; height:100px">
-        Content with <em>multiple</em> nodes.
-        <Fa icon={faCube} size="1x" pulse  color="blue" />
-      </div>
-
->>>>>>> 2a4041cfadd1738a4b2325b02eda9d5aec2958c3
       </div>
 
       <div class="main-content">
